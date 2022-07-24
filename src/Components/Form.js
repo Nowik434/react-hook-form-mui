@@ -55,11 +55,11 @@ export default function AdditionalForm() {
     typeOfEducation: yup
       .string()
       .required("Kierunek wykształcenia jest wymagany"),
-    number: yup
+    phone: yup
       .number()
       .typeError("Pole musi być numerem")
       .min(6, "Numer musi być 6 cyfrowy")
-      .max(6, "Numer nie może być większy niż 6 cyfrowy")
+      .max(7, "Numer nie może być większy niż 6 cyfrowy")
       .required("Numer jest wymagany")
       .integer(),
     // website: yup.string().url(),
@@ -238,11 +238,10 @@ export default function AdditionalForm() {
                 label="Telefon"
                 defaultValue={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                {...register("number")}
+                {...register("phone")}
+                helperText={errors.phone && errors.phone.message}
+                error={errors.phone !== undefined}
               />
-              <FormHelperText>
-                {errors.number && errors.number.message}
-              </FormHelperText>
               <Stack
                 direction="row"
                 spacing={2}
